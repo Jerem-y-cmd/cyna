@@ -1,0 +1,7 @@
+---
+- name: Test ping
+  hosts: AD1
+  gather_facts: no
+  tasks:
+    - name: Ping avec win_ping
+      win_ping:
