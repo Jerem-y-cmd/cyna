@@ -15,7 +15,7 @@
         state: installed
         reboot: yes
         reboot_timeout: 600
-       register: update_result
+      register: update_result
 
      - name: Display update summary
        debug: 
