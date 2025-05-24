@@ -16,6 +16,6 @@
         reboot_timeout: 600
       register: update_result
 
-     - name: Display update summary
-       debug: 
-       var: update_result
+    - name: Display update summary
+      debug: 
+        var: update_result
