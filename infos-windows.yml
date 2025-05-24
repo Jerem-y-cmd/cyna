@@ -1,0 +1,36 @@
+--- 
+- name: Collecte info hote
+  hosts: Client
+  gather_facts: no
+
+
+  tasks:
+    - name: verif winrm
+      win_ping:
+
+    - name: recuperer nom machine
+      win_hostname:
+      register: hostname_result
+
+    - name: afficher nom
+      debug:
+        msg: "Nom de la machine : {{ hostname_result.hostname }}"
+
+    - name: recup version windows
+      win_command: systeminfo | findstr /B /C:"OS Name" C:"OS Version"
+      register: systeminfo_result
+
+    - name: afficher la version
+      debug:
+        var: systeminfo_result.stdout_lines
+
+    - name: obtenir config ip
+      debug:
+        var: ipconfig_result.stdout_lines
+
+    - name: lister 5 premiers services windows
+      win_service_facts:
+
+    - name: Afficher les services
+      debug:
+        var: ansible_facts.services | dict2items | slice(5)
