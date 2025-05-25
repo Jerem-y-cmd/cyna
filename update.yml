@@ -2,7 +2,8 @@
 - name: apply windows update
   hosts: Client1 
   gather_facts: no
-
+  collections:
+    - ansible.windows
 
   tasks:
     - name: check updates
