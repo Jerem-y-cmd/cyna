@@ -1,6 +1,6 @@
 ---
 - name: apply windows update
-  hosts: Client 
+  hosts: Client1 
   gather_facts: no
 
 
